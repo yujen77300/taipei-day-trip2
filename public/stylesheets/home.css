@@ -1,0 +1,643 @@
+html,
+body {
+  font-family: 'Noto Sans TC';
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  color: #666666;
+
+}
+
+
+header {
+  height: 54px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 54px;
+  margin: 0 auto;
+  width: 1200px;
+
+}
+
+
+
+h2 {
+  font-weight: bold;
+  color: #448899;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 34px;
+  cursor: pointer;
+
+}
+
+.item-section {
+  display: flex;
+  align-items: center;
+
+}
+
+.burger {
+  display: none;
+  cursor: pointer;
+}
+
+.burger-close {
+  display: none;
+}
+
+.burger-list {
+  display: none;
+  z-index: 100;
+  outline: 3px red solid;
+  width: 600px;
+  height: 300px;
+}
+
+.item {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 13px;
+  color: #666666;
+  padding: 10px;
+  cursor: pointer;
+
+}
+
+.item:hover {
+  color: #fff;
+  background: #66aabb;
+}
+
+.smallPX-bar-avator {
+  display: none;
+}
+
+.taipei {
+  background-image: url(/picture/welcome.png);
+  height: 320px;
+  width: 100%;
+  background-size: cover;
+  background-position: center top;
+  display: flex;
+  justify-content: center;
+  padding-left: 20px;
+}
+
+.title {
+  margin: 0 auto;
+  width: 1200px;
+  padding-top: 85px;
+  color: #f8f8f8
+}
+
+h1 {
+  margin-top: 0;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: row;
+}
+
+.searchbg {
+  max-width: 400px;
+  height: 46px;
+  background-color: #ffffff;
+}
+
+#search-button {
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+
+.search-bar {
+  border: none;
+  border-radius: 5px 0 0 5px;
+  padding: 0;
+  width: 370px;
+  height: 16px;
+  padding: 15px;
+
+}
+
+.searching-cat {
+  margin-top: 5px;
+  width: 400px;
+  height: 162px;
+  box-shadow: 0px 0px 20px #AABBCC;
+  border-radius: 5px;
+  background-color: #ffffff;
+  /* z-index: 9999; */
+  position: relative;
+  flex-wrap: wrap;
+  display: none;
+}
+
+.categories {
+  color: #000000;
+  font-size: 15px;
+  width: 120px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border: none;
+}
+
+.categories:hover {
+  background-color: #e8e8e8;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cat-text {
+  padding-left: 15px;
+}
+
+#search-button {
+  width: 60px;
+  height: 46px;
+  border: none;
+  background-color: #448899;
+}
+
+
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 55px;
+
+}
+
+.attraction-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px
+}
+
+.attraction {
+  width: 270px;
+  height: 242px;
+  border: 1px solid #e8e8e8;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+
+.attraction-pic {
+  background-size: cover;
+  background-position: center center;
+  width: 270px;
+  height: 197px;
+  display: flex;
+  justify-content: flex-end;
+  border-radius: 5px 5px 0 0;
+}
+
+.image-below {
+  width: 100%;
+  height: 45px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  border-radius: 5px;
+
+}
+
+.name-back {
+  width: 100%;
+  height: 40px;
+  background-color: rgb(0, 0, 0, 0.6);
+  position: relative;
+  bottom: -157px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.name {
+  width: 250px;
+  height: 20px;
+  font-weight: bold;
+  color: #ffffff;
+  opacity: 1;
+}
+
+.mrt {
+  width: 125x;
+  height: 25px;
+  margin-left: 10px;
+}
+
+.category {
+  width: 125x;
+  height: 25px;
+  margin-right: 10px;
+}
+
+.footer {
+  width: 100%;
+  height: 104px;
+  background-color: #757575;
+  margin: 0 auto;
+  color: #FFFFFF;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 55px;
+}
+
+.last-card {
+  border: 3px solid red;
+}
+
+.no-result {
+  display: none;
+}
+
+
+
+.popup {
+  box-sizing: border-box;
+  position: absolute;
+  left: 50%;
+  top: -150%;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(1.25);
+  width: 340px;
+  padding: 0 15px 0 15px;
+  background: #fff;
+  box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0, 0.15);
+  border-radius: 6px;
+  transition: top 0ms ease-in-out 200ms, opacity 200ms ease-in-out 0ms,
+    transform 20ms ease-in-out 0ms;
+  filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, .5));
+}
+
+.popup.active {
+  top: 22%;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  z-index: 9999;
+  background-color: #fff;
+  transition: top 0ms ease-in-out 0ms, opacity 200ms ease-in-out 0ms,
+    transform 20ms ease-in-out 0ms;
+}
+
+.body.popupactive {
+  overflow: hidden;
+  background-color: rgba(15, 15, 15);
+  z-index: 9900;
+  font-family: 'Noto Sans TC';
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+
+.popup .close-btn {
+  background-color: #fff;
+  position: absolute;
+  border: none;
+  padding: 0;
+  top: 27px;
+  right: 17px;
+  line-height: 16px;
+  cursor: pointer;
+}
+
+.login-bar {
+  width: 340px;
+  height: 10px;
+  background: linear-gradient(to right, #66aabb, #337788);
+  margin-right: -15px;
+  margin-left: -15px;
+  border-radius: 6px 6px 0 0;
+}
+
+.login-title {
+  text-align: center;
+  font-weight: bold;
+  color: #666666;
+  margin-bottom: 15px;
+  font-size: 24px;
+  height: 27px;
+}
+
+.popup .form {
+  margin-top: 15px;
+}
+
+.popup .form .form-element {
+  margin-top: 10px;
+}
+
+.popup .form .form-element input[type="email"] {
+  display: block;
+  width: 280px;
+  padding: 15px;
+  outline: none;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+}
+
+.popup .form .form-element input[type="password"] {
+  display: block;
+  width: 280px;
+  padding: 15px;
+  outline: none;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+}
+
+.popup .form .form-element button {
+  height: 40px;
+  width: 100%;
+  border: none;
+  outline: none;
+  background: #448899;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 19px;
+}
+
+.popup .form .form-element a {
+  color: #666666;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+#login-fail,
+#signup-fail {
+  text-align: center;
+  color: red;
+}
+
+#signup-success {
+  text-align: center;
+  color: green;
+}
+
+
+/* 彈出式註冊式窗 */
+.signup {
+  box-sizing: border-box;
+  position: absolute;
+  left: 50%;
+  top: -150%;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(1.25);
+  width: 340px;
+  padding: 0 15px 0 15px;
+  background: #fff;
+  box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0, 0.15);
+  border-radius: 6px;
+  transition: top 0ms ease-in-out 200ms, opacity 200ms ease-in-out 0ms,
+    transform 20ms ease-in-out 0ms;
+  filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, .5));
+}
+
+.signup.active {
+  top: 22%;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  z-index: 9999;
+  background-color: #fff;
+  transition: top 0ms ease-in-out 0ms, opacity 200ms ease-in-out 0ms,
+    transform 20ms ease-in-out 0ms;
+}
+
+.signup.popupactive {
+  overflow: hidden;
+  background-color: rgba(15, 15, 15);
+  z-index: 9900;
+  font-family: 'Noto Sans TC';
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+
+.signup .close-btn {
+  background-color: #fff;
+  position: absolute;
+  border: none;
+  padding: 0;
+  top: 27px;
+  right: 17px;
+  line-height: 16px;
+  cursor: pointer;
+}
+
+.login-bar {
+  width: 340px;
+  height: 10px;
+  background: linear-gradient(to right, #66aabb, #337788);
+  margin-right: -15px;
+  margin-left: -15px;
+  border-radius: 6px 6px 0 0;
+}
+
+.login-title {
+  text-align: center;
+  font-weight: bold;
+  color: #666666;
+  margin-bottom: 15px;
+  font-size: 24px;
+  height: 27px;
+}
+
+.signup .form {
+  margin-top: 15px;
+}
+
+.signup .form .form-element {
+  margin-top: 10px;
+}
+
+.signup .form .form-element input[type="text"] {
+  display: block;
+  width: 280px;
+  padding: 15px;
+  outline: none;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+}
+
+
+.signup .form .form-element input[type="email"] {
+  display: block;
+  width: 280px;
+  padding: 15px;
+  outline: none;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+}
+
+.signup .form .form-element input[type="password"] {
+  display: block;
+  width: 280px;
+  padding: 15px;
+  outline: none;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+}
+
+.signup .form .form-element button {
+  height: 40px;
+  width: 100%;
+  border: none;
+  outline: none;
+  background: #448899;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 19px;
+}
+
+.signup .form .form-element a {
+  color: #666666;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+@media (max-width:1200px) {
+  main {
+    max-width: 90%;
+  }
+
+  .navbar {
+    width: 90%;
+  }
+
+  .title {
+    width: 90%;
+  }
+
+  .input-group {
+    width: 90%;
+  }
+
+  .searchbg {
+    width: 65%;
+  }
+
+
+  .search-bar {
+    width: 340px;
+
+  }
+
+  .attraction {
+    width: 45%;
+  }
+
+  .attraction-pic {
+    width: 100%;
+    background-size: cover;
+    background-position: center center;
+  }
+
+  .name-back {
+
+    justify-content: flex-start;
+
+  }
+
+  .name {
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+
+  main {
+    max-width: 90%;
+  }
+
+
+  .searchbg {
+    width: 230px;
+    height: 46px;
+
+    background-color: #ffffff;
+  }
+
+  .attraction {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .title {
+    width: 90%;
+  }
+
+  .search-bar {
+    width: 195px;
+    height: 16px;
+  }
+
+
+  .item-section {
+    height: 30vh;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    z-index: 10;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(15, 15, 15, 0.25);
+    transition: top 1s ease 0s;
+    display: none;
+  }
+
+  .item {
+    color: white;
+  }
+
+  .bar-avator {
+    position: fixed;
+    top: 20px;
+    right: 45px;
+  }
+
+
+  .burger-close {
+    display: block;
+    position: fixed;
+    top: 20px;
+    right: 75px;
+    cursor: pointer;
+  }
+
+  .smallPX-bar-avator {
+    display: block;
+  }
+
+  .burger {
+    display: block;
+    position: fixed;
+    top: 15px;
+    right: 75px;
+  }
+}
