@@ -1,0 +1,658 @@
+html,
+body {
+  font-family: 'Noto Sans TC';
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  color: #666666
+}
+
+
+header {
+  border-bottom: 1px solid rgba(102, 102, 102, 0.2);
+  height: 54px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 54px;
+  margin: 0 auto;
+  width: 1200px;
+
+}
+
+h2 {
+  font-weight: bold;
+  color: #448899;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 34px;
+  cursor: pointer;
+}
+
+.item-section {
+  display: flex;
+  align-items: center;
+}
+
+.item {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 13px;
+  color: #666666;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.attraction-middle {
+  margin-top: 37px;
+  display: flex;
+  justify-content: center;
+}
+
+.container-middle {
+  margin-right: 5px;
+  margin-left: 5px;
+  display: flex;
+  gap: 30px;
+
+}
+
+.name {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.cat-location {
+  margin: 15px 0 20px 0;
+}
+
+/* carousel */
+
+.slides {
+  height: 406px;
+  width: 540px;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.slide {
+  margin: 0;
+  padding: 0;
+  width: inherit;
+  height: inherit;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+
+.right-button {
+  z-index: 100;
+  position: absolute;
+  bottom: 50%;
+  padding-right: 10px;
+  right: 0;
+  cursor: pointer;
+
+}
+
+.left-button {
+  z-index: 100;
+  bottom: 50%;
+  position: absolute;
+  padding-left: 10px;
+  cursor: pointer;
+}
+
+
+.slide {
+  background-size: cover;
+  background-position: center center;
+  z-index: -1;
+}
+
+input[type="radio"] {
+  z-index: 100;
+  position: relative;
+  display: none;
+}
+
+.controls-visible {
+  position: absolute;
+  width: 100%;
+  bottom: 13px;
+  text-align: center;
+}
+
+label {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-color: #fff;
+  border-radius: 50%;
+  margin: 0 3px;
+  border: 2px solid #fff;
+}
+
+#firstButton {
+  background-color: #000;
+}
+
+
+
+.slides input[type="radio"]:nth-of-type(1):checked~.slide {
+  transform: translatex(0%);
+}
+
+/* carousel finished */
+
+.booking {
+  width: 600px;
+}
+
+.schedule-booking {
+  background-color: #e8e8e8;
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  height: 310px;
+  border-radius: 5px;
+}
+
+.booking-title {
+  margin-left: 20px;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.booking-description {
+  margin-left: 20px;
+  margin-top: 15px;
+}
+
+.booking-date {
+  margin-left: 20px;
+  font-weight: bold;
+  margin-top: 24px;
+}
+
+#trip-date {
+  margin-left: 5px;
+  width: 173px;
+  height: 25px;
+}
+
+
+input[type="date"] {
+  padding: 5px 10px 5px 10px;
+  border: none;
+}
+
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  display: block;
+  background: url(/picture/calendar.png) no-repeat;
+  width: 24px;
+  height: 24px;
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+.time-item {
+  display: flex;
+  margin-top: 24px;
+}
+
+.time {
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+.booking-fee-item {
+  display: flex;
+  margin-top: 15px;
+}
+
+.booking-fee {
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+
+.morning-section,
+.afternoon-section {
+  display: flex;
+  cursor: pointer;
+}
+
+
+#morning-button {
+  width: 22px;
+  height: 22px;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  margin: 0 6px 0 12px;
+}
+
+#morning-button.clicked {
+  width: 18px;
+  height: 18px;
+  background-color: #448899;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  margin: 0 6px 0 12px;
+}
+
+#afternoon-button.clicked {
+  width: 18px;
+  height: 18px;
+  background-color: #448899;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  margin: 0 4px 0 18px;
+}
+
+#afternoon-button {
+  width: 22px;
+  height: 22px;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  margin: 0 4px 0 18px;
+}
+
+.booking-button {
+  margin-left: 20px;
+  margin-top: 35px;
+  background-color: #448899;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  width: 154px;
+  height: 36px;
+  font-size: 19px;
+  cursor: pointer;
+}
+
+hr {
+  background-color: #E8E8E8;
+  Width: 1200px;
+  margin-top: 37px;
+}
+
+.attraction-below {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+
+}
+
+.container-below {
+  max-width: 1180px;
+
+}
+
+
+.address-item,
+.transport-item {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+#booking-fail {
+  color: red;
+  margin-left: 20px;
+}
+
+.footer {
+  width: 100%;
+  height: 104px;
+  background-color: #757575;
+  margin: 0 auto;
+  margin-top: 120px;
+  color: #FFFFFF;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.popup {
+  box-sizing: border-box;
+  position: absolute;
+  left: 50%;
+  top: -150%;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(1.25);
+  width: 340px;
+  padding: 0 15px 0 15px;
+  background: #fff;
+  box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0, 0.15);
+  border-radius: 6px;
+  transition: top 0ms ease-in-out 200ms, opacity 200ms ease-in-out 0ms,
+    transform 20ms ease-in-out 0ms;
+  filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, .5));
+}
+
+.popup.active {
+  top: 22%;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  z-index: 9999;
+  background-color: #fff;
+  transition: top 0ms ease-in-out 0ms, opacity 200ms ease-in-out 0ms,
+    transform 20ms ease-in-out 0ms;
+}
+
+.body.popupactive {
+  overflow: hidden;
+  background-color: rgba(15, 15, 15);
+  z-index: 9900;
+  font-family: 'Noto Sans TC';
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+
+.popup .close-btn {
+  background-color: #fff;
+  position: absolute;
+  border: none;
+  padding: 0;
+  top: 27px;
+  right: 17px;
+  line-height: 16px;
+  cursor: pointer;
+}
+
+.login-bar {
+  width: 340px;
+  height: 10px;
+  background: linear-gradient(to right, #66aabb, #337788);
+  margin-right: -15px;
+  margin-left: -15px;
+  border-radius: 6px 6px 0 0;
+}
+
+.login-title {
+  text-align: center;
+  font-weight: bold;
+  color: #666666;
+  margin-bottom: 15px;
+  font-size: 24px;
+  height: 27px;
+}
+
+.popup .form {
+  margin-top: 15px;
+}
+
+.popup .form .form-element {
+  margin-top: 10px;
+}
+
+.popup .form .form-element input[type="email"] {
+  display: block;
+  width: 280px;
+  padding: 15px;
+  outline: none;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+}
+
+.popup .form .form-element input[type="password"] {
+  display: block;
+  width: 280px;
+  padding: 15px;
+  outline: none;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+}
+
+.popup .form .form-element button {
+  height: 40px;
+  width: 100%;
+  border: none;
+  outline: none;
+  background: #448899;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 19px;
+}
+
+.popup .form .form-element a {
+  /*   display: block; */
+  /*   text-align: right; */
+  /*   font-size: 15px; */
+  color: #666666;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+#login-fail,
+#signup-fail {
+  text-align: center;
+  color: red;
+}
+
+#signup-success {
+  text-align: center;
+  color: green;
+}
+
+
+
+.signup {
+  box-sizing: border-box;
+  position: absolute;
+  left: 50%;
+  top: -150%;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(1.25);
+  width: 340px;
+  padding: 0 15px 0 15px;
+  background: #fff;
+  box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0, 0.15);
+  border-radius: 6px;
+  transition: top 0ms ease-in-out 200ms, opacity 200ms ease-in-out 0ms,
+    transform 20ms ease-in-out 0ms;
+  filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, .5));
+}
+
+.signup.active {
+  top: 22%;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  z-index: 9999;
+  background-color: #fff;
+  transition: top 0ms ease-in-out 0ms, opacity 200ms ease-in-out 0ms,
+    transform 20ms ease-in-out 0ms;
+}
+
+.signup.popupactive {
+  overflow: hidden;
+  background-color: rgba(15, 15, 15);
+  z-index: 9900;
+  font-family: 'Noto Sans TC';
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+
+.signup .close-btn {
+  background-color: #fff;
+  position: absolute;
+  border: none;
+  padding: 0;
+  top: 27px;
+  right: 17px;
+  line-height: 16px;
+  cursor: pointer;
+}
+
+.login-bar {
+  width: 340px;
+  height: 10px;
+  background: linear-gradient(to right, #66aabb, #337788);
+  margin-right: -15px;
+  margin-left: -15px;
+  border-radius: 6px 6px 0 0;
+}
+
+.login-title {
+  text-align: center;
+  font-weight: bold;
+  color: #666666;
+  margin-bottom: 15px;
+  font-size: 24px;
+  height: 27px;
+}
+
+.signup .form {
+  margin-top: 15px;
+}
+
+.signup .form .form-element {
+  margin-top: 10px;
+}
+
+.signup .form .form-element input[type="text"] {
+  display: block;
+  width: 280px;
+  padding: 15px;
+  outline: none;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+}
+
+
+.signup .form .form-element input[type="email"] {
+  display: block;
+  width: 280px;
+  padding: 15px;
+  outline: none;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+}
+
+.signup .form .form-element input[type="password"] {
+  display: block;
+  width: 280px;
+  padding: 15px;
+  outline: none;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+}
+
+.signup .form .form-element button {
+  height: 40px;
+  width: 100%;
+  border: none;
+  outline: none;
+  background: #448899;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 19px;
+}
+
+.signup .form .form-element a {
+  color: #666666;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+
+
+
+
+
+@media (max-width:1200px) {
+  .navbar {
+    width: 91.7%;
+  }
+
+  .container-below {
+    width: 91.7%;
+  }
+
+  .container-middle {
+    width: 91.7%;
+  }
+
+
+  .slide {
+    width: 100%;
+    background-size: cover;
+    background-position: center center;
+  }
+
+  .schedule-booking {
+    width: 100%;
+    height: 310px;
+  }
+
+  hr {
+    width: 91.7%;
+  }
+
+}
+
+@media (max-width: 860px) {
+  .container-middle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 0;
+    margin-left: 0;
+    gap: 20px;
+    width: 100%;
+
+  }
+
+  .slides {
+    width: 100%;
+  }
+
+  .attraction-middle {
+    margin-top: 0;
+  }
+
+  .booking {
+    width: 100%;
+  }
+
+  .schedule-booking {
+    width: 94.4%;
+    margin: 0 auto;
+  }
+
+  .cat-location {
+    margin-left: 10px;
+  }
+
+  .name {
+    margin-left: 10px;
+  }
+
+  .booking-button {
+    margin-top: 30px;
+  }
+
+}
