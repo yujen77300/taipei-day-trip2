@@ -29,7 +29,6 @@ class attractionCategory(MethodView):
             cur.execute("SELECT CAT FROM spot_info GROUP BY CAT")
             info = cur.fetchall()
             for category in info:
-              # 從tuple轉為string
                 string = ''.join(category)
                 string.replace('\u3000', ' ')
                 categories.append(string)
@@ -40,5 +39,111 @@ class attractionCategory(MethodView):
             cur.close()
             mydb.close()
 
+
+class attractionList(MethodView):
+    def get(self, id):
+        if id is None:
+            spotInfo = []
+            spot = {}
+            spotInfoWithKey = []
+            imgList = []
+            page = request.args.get("page", 0)
+            attractionPerPage = 12
+            keyword = request.args.get("keyword")
+
+            mydb = taipeiPool.get_connection()
+            cur = mydb.cursor()
+
+            if keyword is not None:
+                cur.execute(
+                    "SELECT id, CAT, MEMO_TIME, MRT, address, description, direction, latitude, longitude, name FROM spot_info WHERE CAT=%s;", [keyword])
+                info = cur.fetchall()
+                if (int(page)+1) * attractionPerPage < len(info):
+                    nextpage = int(page)+1
+                else:
+                    nextpage = None
+                cur.execute(
+                    "SELECT id, CAT, MEMO_TIME, MRT, address, description, direction, latitude, longitude, name FROM spot_info WHERE CAT=%s LIMIT %s, %s;", (keyword, (int(page)*12), 12))
+            else:
+                cur.execute(
+                    "SELECT id, CAT, MEMO_TIME, MRT, address, description, direction, latitude, longitude, name FROM spot_info")
+                info = cur.fetchall()
+                if (int(page)+1) * attractionPerPage < len(info):
+                    nextpage = int(page)+1
+                else:
+                    nextpage = None
+                cur.execute(
+                    "SELECT id, CAT, MEMO_TIME, MRT, address, description, direction, latitude, longitude, name FROM spot_info LIMIT %s, %s;", ((int(page)*12), 12))
+            spotInfo = cur.fetchall()
+            for i in spotInfo:
+                imgCursor = mydb.cursor()
+                imgCursor.execute(
+                    "SELECT file FROM image WHERE spot_info_id=%s", [i[0]])
+                imgAddress = imgCursor.fetchall()
+                for img in imgAddress:
+                    string = ''.join(img)
+                    imgList.append("https://" + string)
+                spot["id"] = i[0]
+                spot["name"] = i[9]
+                spot["category"] = i[1]
+                spot["description"] = i[5]
+                spot["address"] = i[4]
+                spot["trasnport"] = i[6]
+                spot["mrt"] = i[3]
+                spot["lat"] = float(str(i[7]))
+                spot["lng"] = float(str(i[8]))
+                spot["image"] = imgList
+                dictCopy = spot.copy()
+                spot = {}
+                imgList = []
+                spotInfoWithKey.append(dictCopy)
+
+            mydb.close()
+            cur.close()
+            try:
+                return ({'nextpage': nextpage, "data": spotInfoWithKey})
+            except Exception as e:
+                return {'error': True, "message": str(e)}
+        else:
+            spot = {}
+            imgList = []
+            mydb = taipeiPool.get_connection()
+            cur = mydb.cursor()
+            cur.execute(
+                "SELECT id, CAT, MEMO_TIME, MRT, address, description, direction, latitude, longitude, name FROM spot_info WHERE id=%s;", [id])
+            spotInfo = cur.fetchall()
+            try:
+                if spotInfo:
+                    cur.close()
+                    imgCursor = mydb.cursor()
+                    imgCursor.execute(
+                        "SELECT file FROM image WHERE spot_info_id=%s", [id])
+                    imgAddress = imgCursor.fetchall()
+                    for img in imgAddress:
+                        string = ''.join(img)
+                        imgList.append("https://" + string)
+                    spot["id"] = spotInfo[0][0]
+                    spot["category"] = spotInfo[0][1]
+                    spot["description"] = spotInfo[0][5]
+                    spot["address"] = spotInfo[0][4]
+                    spot["transport"] = spotInfo[0][6]
+                    spot["mrt"] = spotInfo[0][3]
+                    spot["lat"] = float(str(spotInfo[0][7]))
+                    spot["lng"] = float(str(spotInfo[0][8]))
+                    spot["image"] = imgList
+                    spot["name"] = spotInfo[0][9]
+                    return ({"data": spot})
+                else:
+                    return ({"error": True, "message": "請輸入正確景點編號"})
+            except Exception as e:
+                return {'error': True, "message": str(e)}
+            finally:
+                imgCursor.close()
+                mydb.close()
+
 attractionApi.add_url_rule(
     '/categories', view_func=attractionCategory.as_view('Categories of all tourist spots'))
+attractionApi.add_url_rule(
+    '/attractions', defaults={'id': None}, view_func=attractionList.as_view('All tourist spots'))
+attractionApi.add_url_rule(
+    '/attraction/<id>', view_func=attractionList.as_view('Specific tourist spot'))
