@@ -12,7 +12,6 @@ with open("data/taipei-attractions.json", encoding="utf-8") as json_file:
 
 spotsInfo = data["result"]["results"]
 
-
 taipeiPool = mysql.connector.pooling.MySQLConnectionPool(
     pool_name="connectionPool",
     pool_size=20,
@@ -26,9 +25,10 @@ taipeiPool = mysql.connector.pooling.MySQLConnectionPool(
 mydb = taipeiPool.get_connection()
 cur = mydb.cursor()
 
+
 for i in spotsInfo:
-    cur.execute("INSERT IGNORE INTO spot_info(_id, CAT, MEMO_TIME, MRT, SERIAL_NO, address, avBegin, avEnd, date, description, direction, idpt, langinfo, latitude, longitude, name, rate) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
-                (i["_id"], i["CAT"], i["MEMO_TIME"], i["MRT"], i["SERIAL_NO"], i["address"], (i["avBegin"]).replace('/', '-'), (i["avEnd"]).replace('/', '-'), (i["date"]).replace('/', '-'), i["description"], i["direction"], i["idpt"], i["langinfo"], i["latitude"], i["longitude"], i["name"], i["rate"]))
+    cur.execute("INSERT IGNORE INTO spot_info(id, CAT, MEMO_TIME, MRT, address, description, direction, latitude, longitude, name) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
+                (i["_id"], i["CAT"], i["MEMO_TIME"], i["MRT"], i["address"], i["description"], i["direction"], i["latitude"], i["longitude"], i["name"]))
 mydb.commit()
 
 
@@ -37,7 +37,7 @@ spotIdAndImage = {}
 for i in spotsInfo:
     spotImageAddress = []
     spotImageAddressWithJpgPng = []
-    _id = i["_id"]
+    id = i["_id"]
     spotImageAddress = i["file"].split('https://')
 
     spotImageAddress.pop(0)
@@ -50,14 +50,14 @@ for i in spotsInfo:
 
             spotImageAddressWithJpgPng.remove(address)
 
-    spotIdAndImage[_id] = spotImageAddressWithJpgPng
+    spotIdAndImage[id] = spotImageAddressWithJpgPng
 
 
 
 for i in spotsInfo:
     for image in spotIdAndImage[i["_id"]]:
-        cur.execute("INSERT INTO image(name, _id, file) VALUES(%s,%s,%s)",
-                    (i["name"], i["_id"], image))
+        cur.execute("INSERT INTO image(spot_info_id, file) VALUES(%s,%s)",
+                    (i["_id"], image))
 mydb.commit()
 cur.close()
 mydb.close()
