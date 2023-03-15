@@ -6,29 +6,21 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Taipei trip 台北一日遊2.0</title>
-  <link rel="stylesheet" href="/stylesheets/home.css">
+  <link rel="stylesheet" href="/stylesheets/attraction.css">
 </head>
 
 <body class="body">
+
   <header>
-    <div class="burger-list"></div>
     <nav class="navbar">
       <h2 onclick="window.location='/'">台北一日遊</h2>
-      <div class="burger">☰</div>
-
       <div class="item-section">
         <div class="item" id="member-btn">會員中心</div>
         <div class="item" id="schedule-btn">預訂行程</div>
         <div class="item" id="login-logout">登入/註冊</div>
-        <div class="burger-close"><img src="/picture/burgerclose.png" style="width: 16px;height:16px"></div>
-        <div class="bar-avator">
-        </div>
-
+        <div class="bar-avator"></div>
       </div>
-      <div class="smallPX-bar-avator"></div>
-
     </nav>
-
   </header>
   <div class="popup">
     <div class=login-bar></div>
@@ -76,35 +68,70 @@
       </div>
     </div>
   </div>
-  <div class="taipei">
-    <div class="title">
-      <h1>輕鬆享受台北一日悠閒</h1>
-      <p>探索每個角落，體驗城市的深度旅遊行程</p>
-      <!-- 輸入景點名稱查詢 -->
-      <div class="input-group">
-        <div class="searchbg">
-          <input type="text" name="keyword" class="search-bar" placeholder="輸入景點類別查詢" aria-describedby="search-button">
-        </div>
-        <div class="input-icon">
-          <button type="button" id="search-button" onclick="getAttraction()"><img src="/picture/search.png"></button>
+  <div class="attraction-middle">
+    <div class="container-middle">
+      <!-- carousel -->
+      <div class="slides">
+        <img class="left-button" src="/picture/leftArrow.png" onclick="leftShift()" alt="">
+        <img class="right-button" src="/picture/rightArrow.png" onclick="rightShift()" alt="">
+
+        <input type="radio" id="control-1" name="control" checked>
+
+        <div class="slide" id="firstSlide"></div>
+        <div class="controls-visible">
+          <label for="control-1" class="control-button" id="firstButton"></label>
         </div>
       </div>
-      <div class="searching-cat">
+      <div class="booking">
+        <div class="name"></div>
+        <div class="cat-location"></div>
+        <div class="schedule-booking">
+          <div class="booking-title">訂購導覽行程</div>
+          <div class="booking-description">以此景點為中心的一日行程，帶您探索城市角落故事</div>
+          <div class="booking-date">選擇日期：
+            <input type="date" id="trip-date" name="trip-start">
+          </div>
+          <div class="time-item">
+            <div class="time">選擇時間：</div>
+            <div class="morning-section">
+              <div id="morning-button" class="clicked"></div>
+              <div class="morning">上半天</div>
+            </div>
+            <div class="afternoon-section">
+              <div id="afternoon-button"></div>
+              <div class="afternoon">下半天</div>
+            </div>
+          </div>
+          <div class="booking-fee-item">
+            <div class="booking-fee">導覽費用：</div>
+            <div class="fee">新台幣2000元</div>
+
+          </div>
+          <div id="booking-fail"></div>
+
+
+
+          <button type="button" class="booking-button">開始預訂行程</button>
+        </div>
       </div>
     </div>
   </div>
-  <main class="attraction-list">
-    <div class="attraction-card">
-      <div class="no-result">
-        沒有結果，請重新輸入類別
-      </div>
-  </main>
+  <hr>
+  <div class="attraction-below">
+    <div class="container-below">
+      <div class="description"></div>
+      <div class="address-item">景點地址：</div>
+      <div class="address"></div>
+      <div class="transport-item">交通方式：</div>
+      <div class="transportation"></div>
+    </div>
+  </div>
   <div class="footer">
     COPYRIGHT © 2023 台北一日遊
   </div>
-  </div>
 
-  <script src="/javascripts/trip.js"></script>
+  <script src="/javascripts/attraction.js"></script>
+  <script src="/javascripts/header.js"></script>
 </body>
 
 </html>
