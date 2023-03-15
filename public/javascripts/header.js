@@ -38,7 +38,7 @@ function signup() {
       signupFail.textContent = "信箱格式錯誤"
       signupEmail.value = ""
     } else if (!passwordValidation(signupInputPassword)) {
-      signupFail.textContent = "密碼至少4位數，且包含至少一個數字與一個英文字母"
+      signupFail.textContent = "密碼至少8位數，且包含至少一個數字與一個英文字母"
       signupPassword.value = ""
     } else {
       let signupData = {
@@ -63,7 +63,7 @@ function emailValidation(email) {
 }
 
 function passwordValidation(password) {
-  if (password.search(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{4,}$/) != -1) {
+  if (password.search(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/) != -1) {
     return true
   } else {
     return false
@@ -205,7 +205,7 @@ function tologin() {
 }
 
 
-const barAvator = document.querySelector(".bar-avator")
+const barAvatar = document.querySelector(".bar-avatar")
 reload()
 function reload() {
   fetch(
@@ -215,16 +215,16 @@ function reload() {
   }).then(function (data) {
     if (data.data != undefined) {
       loginLogout.textContent = "登出系統"
-      if (data.data["avatorName"] == "user.png") {
-        barAvator.style.backgroundImage = "url(/picture/profile.png)"
+      if (data.data["avatarName"] == "user.png") {
+        barAvatar.style.backgroundImage = "url(/picture/profile.png)"
       } else {
-        barAvator.style.backgroundImage = `url('${data.data["avatorUrl"]}')`
+        barAvatar.style.backgroundImage = `url('${data.data["avatarUrl"]}')`
       }
-      barAvator.style.width = "20px"
-      barAvator.style.height = "20px"
-      barAvator.style.borderRadius = "50%"
-      barAvator.style.backgroundSize = "cover"
-      barAvator.style.backgroundPosition = "center center"
+      barAvatar.style.width = "20px"
+      barAvatar.style.height = "20px"
+      barAvatar.style.borderRadius = "50%"
+      barAvatar.style.backgroundSize = "cover"
+      barAvatar.style.backgroundPosition = "center center"
     } else {
       loginLogout.textContent = "登入/註冊"
     }

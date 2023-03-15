@@ -53,6 +53,12 @@ h2 {
   cursor: pointer;
 }
 
+.item:hover {
+  color: #fff;
+  background: #66aabb;
+  border-radius: 5px;
+}
+
 .attraction-middle {
   margin-top: 37px;
   display: flex;
