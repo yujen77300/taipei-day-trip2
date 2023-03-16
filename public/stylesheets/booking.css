@@ -1,0 +1,776 @@
+html,
+body {
+  font-family: 'Noto Sans TC';
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  color: #666666;
+  height: 100%;
+}
+
+#load {
+  display: none;
+  position: fixed;
+
+  width: 600px;
+  height: 36px;
+  left: 25%;
+  top: 50%;
+  margin: auto;
+
+  overflow: visible;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default;
+}
+
+.loading-background {
+  display: none;
+  background-color: rgba(15, 15, 15, 0.25);
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  height: 1300px
+}
+
+#load div {
+  font-size: 30px;
+  position: absolute;
+  width: 20px;
+  height: 36px;
+  opacity: 0;
+  font-family: Helvetica, Arial, sans-serif;
+  animation: move 2s linear infinite;
+  -o-animation: move 2s linear infinite;
+  -moz-animation: move 2s linear infinite;
+  -webkit-animation: move 2s linear infinite;
+  transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  color: #448899;
+}
+
+#load div:nth-child(2) {
+  animation-delay: 0.2s;
+  -o-animation-delay: 0.2s;
+  -moz-animation-delay: 0.2s;
+  -webkit-animation-delay: 0.2s;
+}
+
+#load div:nth-child(3) {
+  animation-delay: 0.4s;
+  -o-animation-delay: 0.4s;
+  -webkit-animation-delay: 0.4s;
+  -webkit-animation-delay: 0.4s;
+}
+
+#load div:nth-child(4) {
+  animation-delay: 0.6s;
+  -o-animation-delay: 0.6s;
+  -moz-animation-delay: 0.6s;
+  -webkit-animation-delay: 0.6s;
+}
+
+#load div:nth-child(5) {
+  animation-delay: 0.8s;
+  -o-animation-delay: 0.8s;
+  -moz-animation-delay: 0.8s;
+  -webkit-animation-delay: 0.8s;
+}
+
+#load div:nth-child(6) {
+  animation-delay: 1s;
+  -o-animation-delay: 1s;
+  -moz-animation-delay: 1s;
+  -webkit-animation-delay: 1s;
+}
+
+#load div:nth-child(7) {
+  animation-delay: 1.2s;
+  -o-animation-delay: 1.2s;
+  -moz-animation-delay: 1.2s;
+  -webkit-animation-delay: 1.2s;
+}
+
+@keyframes move {
+  0% {
+    left: 0;
+    opacity: 0;
+  }
+
+  35% {
+    left: 41%;
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+
+  65% {
+    left: 59%;
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+
+  100% {
+    left: 100%;
+    -moz-transform: rotate(-180deg);
+    -webkit-transform: rotate(-180deg);
+    -o-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+    opacity: 0;
+  }
+}
+
+@-moz-keyframes move {
+  0% {
+    left: 0;
+    opacity: 0;
+  }
+
+  35% {
+    left: 41%;
+    -moz-transform: rotate(0deg);
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+
+  65% {
+    left: 59%;
+    -moz-transform: rotate(0deg);
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+
+  100% {
+    left: 100%;
+    -moz-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes move {
+  0% {
+    left: 0;
+    opacity: 0;
+  }
+
+  35% {
+    left: 41%;
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+
+  65% {
+    left: 59%;
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+
+  100% {
+    left: 100%;
+    -webkit-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+    opacity: 0;
+  }
+}
+
+@-o-keyframes move {
+  0% {
+    left: 0;
+    opacity: 0;
+  }
+
+  35% {
+    left: 41%;
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+
+  65% {
+    left: 59%;
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+
+  100% {
+    left: 100%;
+    -o-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+    opacity: 0;
+  }
+}
+
+
+
+
+
+
+
+
+/* loading animation finish */
+header {
+
+  border-bottom: 1px solid rgba(102, 102, 102, 0.2);
+  height: 54px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 54px;
+  margin: 0 auto;
+  width: 1200px;
+
+}
+
+.top-title {
+  font-weight: bold;
+  font-size: 19px;
+}
+
+h2 {
+  font-weight: bold;
+  color: #448899;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 34px;
+  cursor: pointer;
+}
+
+.item-section {
+  display: flex;
+  align-items: center;
+}
+
+.item {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 13px;
+  color: #666666;
+  padding: 10px;
+  cursor: pointer;
+}
+
+main {
+  /* margin: 0 auto; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+hr {
+  background-color: #E8E8E8;
+  Width: 1200px;
+  margin-top: 40px;
+  margin-bottom: 0px;
+}
+
+.booking-top {
+  width: 1000px;
+
+  margin-top: 46px;
+}
+
+.booking-title {
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.booking-info {
+  margin-top: 35px;
+  /* outline: 3px solid blue; */
+  display: flex;
+  gap: 22px;
+}
+
+/* .booking-delete {
+  position: relative;
+  top: 50%;
+  right: -39%;
+
+} */
+
+.booking-delete-btn {
+  cursor: pointer;
+}
+
+.booking-left {
+  /* background-image: url("https://e0.365dm.com/22/12/768x432/skysports-modric-luka-croatia_5991757.jpg?20221209204917"); */
+  height: 200px;
+  width: 266px;
+  background-size: cover;
+  background-position: center center;
+}
+
+.booking-right {
+  width: 71.4%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.booking-name {
+  font-weight: bold;
+  color: #448899;
+  margin-bottom: 25px;
+}
+
+.schedule-item>.item {
+  padding: 0;
+  margin-right: 5px;
+  font-weight: bold;
+}
+
+.schedule-item {
+  margin-top: 15px;
+}
+
+
+
+.booking-middle {
+  width: 1000px;
+  margin-top: 44px;
+}
+
+.middle-comment {
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 19px;
+  margin-bottom: 5px;
+}
+
+
+.middle-title,
+.bottom-title {
+  font-weight: bold;
+  font-size: 19px;
+}
+
+.booking-form>input {
+  outline: none;
+  border: 1px solid #e8e8e8;
+  width: 180px;
+  height: 18px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.booking-form>.form-control {
+  outline: none;
+  border: 1px solid #e8e8e8;
+  width: 180px;
+  height: 18px;
+  padding: 10px;
+  border-radius: 5px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+
+.booking-form {
+  margin-top: 15px;
+}
+
+.booking-form.first {
+  margin-top: 24px;
+}
+
+.booking-bottom {
+  width: 1000px;
+  margin-top: 44px;
+}
+
+.booking-total {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 1000px;
+  margin-top: 43px;
+}
+
+.total-fee {
+  font-weight: bold;
+}
+
+#book-and-pay {
+  padding: 5px 20px;
+  width: 173px;
+  height: 36px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  color: #FFFFFF;
+  background-color: #448899;
+  margin-top: 25px;
+  cursor: pointer;
+}
+
+.no-schedule {
+  margin-top: 35px;
+  display: none;
+}
+
+.booking-info,
+.booking-middle,
+.booking-bottom,
+.booking-total {
+  /* display: none; */
+}
+
+hr {
+  /* display: none; */
+}
+
+
+.footer {
+  width: 100%;
+  height: 104px;
+  background-color: #757575;
+  margin: 0 auto;
+  margin-top: 40px;
+  color: #FFFFFF;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-extend {
+  background-color: #757575;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 325px;
+  bottom: 0;
+  right: 0;
+  display: none;
+}
+
+
+.popup {
+  box-sizing: border-box;
+  position: absolute;
+  left: 50%;
+  top: -150%;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(1.25);
+  width: 340px;
+  padding: 0 15px 0 15px;
+  background: #fff;
+  box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0, 0.15);
+  border-radius: 6px;
+  transition: top 0ms ease-in-out 200ms, opacity 200ms ease-in-out 0ms,
+    transform 20ms ease-in-out 0ms;
+  filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, .5));
+}
+
+.popup.active {
+  top: 22%;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  z-index: 9999;
+  background-color: #fff;
+  transition: top 0ms ease-in-out 0ms, opacity 200ms ease-in-out 0ms,
+    transform 20ms ease-in-out 0ms;
+}
+
+.body.popupactive {
+  overflow: hidden;
+  background-color: rgba(15, 15, 15);
+  z-index: 9900;
+  font-family: 'Noto Sans TC';
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+
+.popup .close-btn {
+  background-color: #fff;
+  position: absolute;
+  border: none;
+  padding: 0;
+  top: 27px;
+  right: 17px;
+  line-height: 16px;
+  cursor: pointer;
+}
+
+.login-bar {
+  width: 340px;
+  height: 10px;
+  background: linear-gradient(to right, #66aabb, #337788);
+  margin-right: -15px;
+  margin-left: -15px;
+  border-radius: 6px 6px 0 0;
+}
+
+.login-title {
+  text-align: center;
+  font-weight: bold;
+  color: #666666;
+  margin-bottom: 15px;
+  font-size: 24px;
+  height: 27px;
+}
+
+.popup .form {
+  margin-top: 15px;
+}
+
+.popup .form .form-element {
+  margin-top: 10px;
+}
+
+.popup .form .form-element input[type="email"] {
+  display: block;
+  width: 280px;
+  padding: 15px;
+  outline: none;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+}
+
+.popup .form .form-element input[type="password"] {
+  display: block;
+  width: 280px;
+  padding: 15px;
+  outline: none;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+}
+
+.popup .form .form-element button {
+  height: 40px;
+  width: 100%;
+  border: none;
+  outline: none;
+  background: #448899;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 19px;
+}
+
+.popup .form .form-element a {
+  color: #666666;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+#login-fail,
+#signup-fail {
+  text-align: center;
+  color: red;
+}
+
+#signup-success {
+  text-align: center;
+  color: green;
+}
+
+
+.signup {
+  box-sizing: border-box;
+  position: absolute;
+  left: 50%;
+  top: -150%;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(1.25);
+  width: 340px;
+  padding: 0 15px 0 15px;
+  background: #fff;
+  box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0, 0.15);
+  border-radius: 6px;
+  transition: top 0ms ease-in-out 200ms, opacity 200ms ease-in-out 0ms,
+    transform 20ms ease-in-out 0ms;
+  filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, .5));
+}
+
+.signup.active {
+  top: 22%;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  z-index: 9999;
+  background-color: #fff;
+  transition: top 0ms ease-in-out 0ms, opacity 200ms ease-in-out 0ms,
+    transform 20ms ease-in-out 0ms;
+}
+
+.signup.popupactive {
+  overflow: hidden;
+  background-color: rgba(15, 15, 15);
+  z-index: 9900;
+  font-family: 'Noto Sans TC';
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+
+.signup .close-btn {
+  background-color: #fff;
+  position: absolute;
+  border: none;
+  padding: 0;
+  top: 27px;
+  right: 17px;
+  line-height: 16px;
+  cursor: pointer;
+}
+
+.login-bar {
+  width: 340px;
+  height: 10px;
+  background: linear-gradient(to right, #66aabb, #337788);
+  margin-right: -15px;
+  margin-left: -15px;
+  border-radius: 6px 6px 0 0;
+}
+
+.login-title {
+  text-align: center;
+  font-weight: bold;
+  color: #666666;
+  margin-bottom: 15px;
+  font-size: 24px;
+  height: 27px;
+}
+
+.signup .form {
+  margin-top: 15px;
+}
+
+.signup .form .form-element {
+  margin-top: 10px;
+}
+
+.signup .form .form-element input[type="text"] {
+  display: block;
+  width: 280px;
+  padding: 15px;
+  outline: none;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+}
+
+
+.signup .form .form-element input[type="email"] {
+  display: block;
+  width: 280px;
+  padding: 15px;
+  outline: none;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+}
+
+.signup .form .form-element input[type="password"] {
+  display: block;
+  width: 280px;
+  padding: 15px;
+  outline: none;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+}
+
+.signup .form .form-element button {
+  height: 40px;
+  width: 100%;
+  border: none;
+  outline: none;
+  background: #448899;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 19px;
+}
+
+.signup .form .form-element a {
+  color: #666666;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.booking-failed {
+  color: red;
+  margin-top: 5px;
+}
+
+
+#cardimg {
+  vertical-align: middle;
+  position: relative;
+  right: 45px;
+}
+
+@media (max-width:1220px) {
+  .navbar {
+    width: 91.7%;
+  }
+
+  .booking-top,
+  .booking-bottom,
+  .booking-middle,
+  .booking-total {
+    width: 91.7%;
+  }
+
+
+  hr {
+    width: 91.7%;
+  }
+
+}
+
+@media (max-width: 600px) {
+  .booking-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .booking-left {
+    width: 100%;
+  }
+
+  .booking-right {
+    width: 100%;
+  }
+
+  .booking-delete-btn {
+    position: relative;
+    top: 102%;
+  }
+
+  #load {
+    width: 250px;
+    left: 15%;
+  }
+
+  .loading-background {
+    height: 1520px
+  }
+}
