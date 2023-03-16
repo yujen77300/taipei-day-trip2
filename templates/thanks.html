@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Taipei trip 台北一日遊2.0</title>
+  <link rel="stylesheet" href="/stylesheets/thanks.css">
+</head>
+
+<body class="body">
+  <header>
+    <nav class="navbar">
+      <h2 onclick="window.location='/'">台北一日遊</h2>
+      <div class="item-section">
+        <div class="item" id="member-btn">會員中心</div>
+        <div class="item" id="schedule-btn">預訂行程</div>
+        <div class="item" id="login-logout">登入/註冊</div>
+        <div class="bar-avatar"></div>
+      </div>
+    </nav>
+  </header>
+  <div class="popup">
+    <div class=login-bar></div>
+    <div class="form">
+      <div class="login-title">登入會員帳號<button type="button" class="close-btn"><img src="/picture/close.png"></button>
+      </div>
+      <div class="form-element">
+        <input type="email" id="login-email" placeholder="輸入電子信箱">
+      </div>
+      <div class="form-element">
+        <input type="password" id="login-password" placeholder="輸入密碼">
+      </div>
+      <div class="form-element">
+        <button id="login-btn" onclick="login()">登入帳戶</button>
+      </div>
+      <div id="login-fail" class="form-element"></div>
+      <div class="form-element" style="text-align:center; display: flex;justify-content: center;margin-bottom: 10px;">
+        <div>還沒有帳戶&ensp;?&ensp;</div>
+        <div id="signup-btn" style="cursor:pointer" onclick="tosignup()">點此註冊</div>
+      </div>
+    </div>
+  </div>
+  <div class="signup">
+    <div class=login-bar></div>
+    <div class="form">
+      <div class="login-title">註冊會員帳號<button type="button" class="close-btn"><img src="/picture/close.png"></button>
+      </div>
+      <div class="form-element">
+        <input type="text" id="signup-name" placeholder="輸入姓名">
+      </div>
+      <div class="form-element">
+        <input type="email" id="signup-email" placeholder="輸入電子郵件">
+      </div>
+      <div class="form-element">
+        <input type="password" id="signup-password" placeholder="輸入密碼">
+      </div>
+      <div class="form-element">
+        <button id="signupAccount-btn" onclick="signup()">註冊新帳戶</button>
+      </div>
+      <div id="signup-fail" class="form-element"></div>
+      <div id="signup-success" class="form-element"></div>
+      <div class="form-element" style="text-align:center; display: flex;justify-content: center;margin-bottom: 10px;">
+        <div>已經有帳戶了&ensp;?&ensp;</div>
+        <div id="login-btn" style="cursor:pointer" onclick="tologin()">點此登入</div>
+      </div>
+    </div>
+  </div>
+  <main>
+    <h3 class="thank-top">行程預訂成功 您的訂單編號如下 :</h2>
+      <div class="thank-middle"></div>
+      <div class="thank-bottom">請記住此編號，或到<a href="/member">會員中心</a>查詢歷史訂單</div>
+  </main>
+  <div class="footer">
+    COPYRIGHT © 2023 台北一日遊
+  </div>
+  <div class="footer-extend"></div>
+
+  <script src="/javascripts/thanks.js"></script>
+  <script src="/javascripts/header.js"></script>
+</body>
+
+</html>

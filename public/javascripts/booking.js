@@ -23,22 +23,7 @@ const loading = document.getElementById('load')
 const loadingBkgd = document.querySelector('.loading-background')
 let contactInfo = {}
 
-// import * as dotenv from '/Users/user/Desktop/selfstudy/WeHelp/Phase2 -Assignment/taipei-day-trip/node_modules/dotenv/'
-// import dotenv from 'dotenv'
-// import '../../node_modules/dotenv/config.js'
-// // const dotenv = require('dotenv')
 
-// console.log("我要開始了唷ㄎㄎ")
-// console.log(dotenv.config())
-// // console.log("來印出金鑰機密資訊")
-// console.log(process.env.APP_KEY)
-
-// require(['/node_modules/require.js/require.js'], function (dotenv) {
-//   dotenv.config()
-//   console.log("來印出金鑰機密資訊")
-//   console.log(process.env.APP_KEY)
-
-// });
 
 
 renderBooking()
@@ -57,7 +42,6 @@ function renderBooking() {
       ).then(function (response) {
         return response.json();
       }).then(function (data) {
-        // 判斷如果是空的object
         if (Object.keys(data["data"]).length === 0) {
           fetch(
             "/api/user/auth"
@@ -86,7 +70,7 @@ function renderBooking() {
             topTitle.textContent = `您好，${data["data"]["name"]}，待預訂的行程如下 : `
             scehduledUsername.value = data["data"]["name"]
             scehduledEmail.value = data["data"]["email"]
-            // 如果有機號碼有資訊就改，如果沒有顯示placeholder的
+
             if ((data["data"]["phone"]).length > 0) {
               scehduledPhone.value = data["data"]["phone"]
             }
@@ -140,15 +124,10 @@ async function deleteSchedule() {
 }
 
 // tappay
-// 方法一
-// window.addEventListener('load', function () {
-//   this.window.src = "https://js.tappaysdk.com/sdk/tpdirect/v5.14.0"
-// })
-// 方法二
+
 const script = document.createElement('script');
 script.src = 'https://js.tappaysdk.com/sdk/tpdirect/v5.14.0';
 document.body.appendChild(script);
-// 不同方法
 script.onload = function () {
 
   TPDirect.setupSDK(`${APP_ID}`, `${APP_KEY}`, 'sandbox')
@@ -172,7 +151,6 @@ script.onload = function () {
         'color': 'gray'
       },
       'input.ccv': {
-        // 'font-size': '16px'
       },
       ':focus': {
         'color': 'black'
@@ -189,7 +167,6 @@ script.onload = function () {
         }
       }
     },
-    // 此設定會顯示卡號輸入正確後，會顯示前六後四碼信用卡卡號
     isMaskCreditCardNumber: true,
     maskCreditCardNumberRange: {
       beginIndex: 6,
@@ -199,60 +176,20 @@ script.onload = function () {
 
   // listen for TapPay Field
   TPDirect.card.onUpdate(function (update) {
-    /* Disable / enable submit button depend on update.canGetPrime  */
-    /* ============================================================ */
-
-    // update.canGetPrime === true
-    //     --> you can call TPDirect.card.getPrime()
-    // const submitButton = document.querySelector('button[type="submit"]')
     if (update.canGetPrime) {
-      // submitButton.removeAttribute('disabled')
-      console.log("我輸入成功")
     } else {
-      console.log("我輸入失敗")
-      // submitButton.setAttribute('disabled', true)
     }
 
-
     /* Change card image  */
-    cardTypes = ['mastercard', 'visa', 'jcb', 'amex', 'unionpay', 'unknown']
+    const cardTypes = ['mastercard', 'visa', 'jcb', 'amex', 'unionpay', 'unknown']
     let newType = update.cardType === 'unknown' ? '' : update.cardType
     if (cardTypes.includes(newType)) {
       document.getElementById('cardimg').src = `/picture/${newType}.png`
     }
 
-
-
-    /* Change form-group style when tappay field status change */
-    /* ======================================================= */
-    // if (update.status.number === 2) {
-    // console.log('')
-    // setNumberFormGroupToError('.card-number-group')
-    // } else if (update.status.number === 0) {
-    // setNumberFormGroupToSuccess('.card-number-group')
-    // console.log('卡號輸入成功了啦')
-    // } else {
-    // setNumberFormGroupToNormal('.card-number-group')
-    // }
-
-    // if (update.status.expiry === 2) {
-    //   setNumberFormGroupToError('.expiration-date-group')
-    // } else if (update.status.expiry === 0) {
-    //   setNumberFormGroupToSuccess('.expiration-date-group')
-    // } else {
-    //   setNumberFormGroupToNormal('.expiration-date-group')
-    // }
-
-    // if (update.status.ccv === 2) {
-    //   setNumberFormGroupToError('.ccv-group')
-    // } else if (update.status.ccv === 0) {
-    //   setNumberFormGroupToSuccess('.ccv-group')
-    // } else {
-    //   setNumberFormGroupToNormal('.ccv-group')
-    // }
   })
 
-  // 監聽點擊按鈕
+ 
   payBtn.addEventListener('click', function () {
     // 確認是否可以getprime
     if (TPDirect.card.getTappayFieldsStatus().canGetPrime === false) {
@@ -261,18 +198,19 @@ script.onload = function () {
     } else if (scehduledPhone.value === "") {
       bookingFailed.textContent = "請輸入手機號碼"
       return
+    } else if (!phoneValidation(scehduledPhone.value)){
+      bookingFailed.textContent = "請輸入正確手機格式，包含國碼與號碼"
+      return
     } else {
       // Get prime
       TPDirect.card.getPrime((result) => {
-        console.log('成功後的狀態 : ')
-        console.log(result)
+
         if (result.status !== 0) {
           alert('get prime error ' + result.msg)
           return
         } else {
-          console.log('成功後取得prime : ')
-          console.log(result.card.prime)
-          // 成功後將資料給後端
+
+
           fetch(
             "/api/booking"
           ).then(function (response) {
@@ -285,27 +223,21 @@ script.onload = function () {
             order["trip"] = data.data["attraction"]
             order["date"] = data.data["date"]
             order["time"] = data.data["time"]
-            contact["name"] = contactInfo.data["name"]
-            contact["email"] = contactInfo.data["email"]
+
+            contact["name"] = scehduledUsername.value
+            contact["email"] = scehduledEmail.value
             contact["phone"] = scehduledPhone.value
             order["contact"] = contact
             orderData["prime"] = result.card.prime
             orderData["order"] = order
 
-            console.log("目前的訂單資訊")
-            console.log(data)
-            console.log("目前帳號資訊")
-            console.log(contactInfo)
-            console.log("request body")
-            console.log(orderData)
+
             payByPrime(orderData)
-            // console.log(order)
-            // console.log(contact)
+
 
           })
         }
-        // send prime to your server, to pay with Pay by Prime API .
-        // Pay By Prime Docs: https://docs.tappaysdk.com/tutorial/zh/back.html#pay-by-prime-api
+
       })
     }
   })
@@ -324,24 +256,20 @@ async function payByPrime(data) {
       "Content-type": "application/json",
     }
   }
-  // background = document.createElement('div')
-  // background.className = "background"
-  // background.style.cssText = 'background-color: rgba(15, 15, 15, 0.25);z-index:1;position:absolute;left:0;right:0;top:0;bottom:0;'
-  // body.appendChild(background)
+
   loading.style.display = "block"
   loadingBkgd.style.display = "block"
   try {
     let response = await fetch(url, options);
     let result = await response.json();
     if (response.status === 200) {
-      console.log(result)
+
       let orderNumber = result["data"]["number"]
       loadThankyou(orderNumber)
 
       // window.location.reload();
     } else if (response.status === 400) {
-      console.log("近來手機號碼這邊")
-      console.log(result["message"])
+
       bookingFailed.textContent = result["message"]
     }
   } catch (err) {
@@ -350,6 +278,15 @@ async function payByPrime(data) {
 }
 
 function loadThankyou(orderNumber) {
-  document.location.href = '/thankyou'
+  document.location.href = '/thanks'
   sessionStorage.setItem("orderNumber", orderNumber);
+}
+
+
+function phoneValidation(phone) {
+  if (phone.search(/^(\+\d{1,3}|00\d{1,3})\d{6,14}$/) != -1) {
+    return true
+  } else {
+    return false
+  }
 }
