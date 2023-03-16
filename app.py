@@ -1,6 +1,7 @@
 from flask import *
 from resources.attraction import attractionApi
 from resources.user import userApi
+from resources.booking import bookingApi
 
 
 app = Flask(
@@ -24,8 +25,14 @@ def attractionnn(id):
     return render_template("attraction.html")
 
 
+@app.route("/booking")
+def booking():
+    return render_template("booking.html")
+
+
 
 
 app.register_blueprint(attractionApi, url_prefix='/api')
 app.register_blueprint(userApi, url_prefix='/api/user')
+app.register_blueprint(bookingApi, url_prefix='/api/booking')
 app.run(host='0.0.0.0', port=3000)
