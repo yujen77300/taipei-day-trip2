@@ -136,7 +136,7 @@ class userOrder(MethodView):
             mydb = taipeiPool.get_connection()
             cur = mydb.cursor(dictionary=True)
             cur.execute(
-                "SELECT order_info.orderNumber,spot_info.name,order_info.date,order_info.time,order_info.createdAt,order_info.status FROM order_info JOIN spot_info ON order_info.spotId = spot_info._id  WHERE memberId = %s;", [memberId])
+                "SELECT order_info.order_number,spot_info.name,order_info.date,order_info.time,order_info.created_at,order_info.status FROM order_info JOIN spot_info ON order_info.spot_id = spot_info.id  WHERE member_id = %s;", [memberId])
             memberOrderData = cur.fetchall()
             print(memberOrderData)
             print(len(memberOrderData))
@@ -147,11 +147,11 @@ class userOrder(MethodView):
                     for order in memberOrderData:
                         print(order)
                         datata = {}
-                        datata["orderNumber"] = order["orderNumber"]
+                        datata["orderNumber"] = order["order_number"]
                         datata["name"] = order["name"]
                         datata["date"] = order["date"].strftime('%Y-%m-%d')
                         datata["time"] = order["time"]
-                        datata["createdAt"] = order["createdAt"].strftime(
+                        datata["createdAt"] = order["created_at"].strftime(
                             '%Y-%m-%d %H:%M:%S')
                         datata["status"] = order["status"]
                         responseData[f"{no}"] = datata

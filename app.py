@@ -3,6 +3,8 @@ from resources.attraction import attractionApi
 from resources.user import userApi
 from resources.booking import bookingApi
 from resources.order import orderApi
+from resources.upload import uploadImgApi
+from resources.edit import editAllInfoApi
 
 
 app = Flask(
@@ -36,6 +38,12 @@ def thankyou():
     return render_template("thanks.html")
 
 
+@app.route("/member")
+def member():
+    return render_template("member.html")
+
+
+
 
 
 
@@ -43,4 +51,6 @@ app.register_blueprint(attractionApi, url_prefix='/api')
 app.register_blueprint(userApi, url_prefix='/api/user')
 app.register_blueprint(bookingApi, url_prefix='/api/booking')
 app.register_blueprint(orderApi, url_prefix='/api')
+app.register_blueprint(uploadImgApi, url_prefix='/api/upload')
+app.register_blueprint(editAllInfoApi, url_prefix='/api/edit')
 app.run(host='0.0.0.0', port=3000)
