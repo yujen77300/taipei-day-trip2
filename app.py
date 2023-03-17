@@ -5,6 +5,8 @@ from resources.booking import bookingApi
 from resources.order import orderApi
 from resources.upload import uploadImgApi
 from resources.edit import editAllInfoApi
+from asgiref.wsgi import WsgiToAsgi
+import uvicorn
 
 
 app = Flask(
@@ -16,6 +18,8 @@ app = Flask(
 app.config["JSON_AS_ASCII"] = False
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 app.config['JSON_SORT_KEYS'] = False
+
+asgi_app = WsgiToAsgi(app)
 
 
 @app.route("/")
@@ -53,4 +57,7 @@ app.register_blueprint(bookingApi, url_prefix='/api/booking')
 app.register_blueprint(orderApi, url_prefix='/api')
 app.register_blueprint(uploadImgApi, url_prefix='/api/upload')
 app.register_blueprint(editAllInfoApi, url_prefix='/api/edit')
-app.run(host='0.0.0.0', port=3000)
+
+if __name__ == '__main__':
+    uvicorn.run(asgi_app, host='0.0.0.0', port=3000)
+    # app.run(host='0.0.0.0', port=3000)
