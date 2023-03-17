@@ -177,6 +177,7 @@ script.onload = function () {
   // listen for TapPay Field
   TPDirect.card.onUpdate(function (update) {
     if (update.canGetPrime) {
+      console.log("有拿到prime了")
     } else {
     }
 
@@ -230,8 +231,8 @@ script.onload = function () {
             order["contact"] = contact
             orderData["prime"] = result.card.prime
             orderData["order"] = order
-
-
+            
+            console.log(orderData)
             payByPrime(orderData)
 
 
