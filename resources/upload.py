@@ -3,6 +3,8 @@ from flask.views import MethodView
 import mysql.connector
 import jwt
 import os
+import string
+import random
 from dotenv import load_dotenv
 from werkzeug.utils import secure_filename
 from azure.storage.blob import BlobServiceClient
@@ -27,7 +29,7 @@ taipeiPool = mysql.connector.pooling.MySQLConnectionPool(
 )
 
 
-class uploadAvator(MethodView):
+class uploadAvatar(MethodView):
     def post(self):
         avatarInfo = {}
         token = request.cookies.get('token')
@@ -38,18 +40,23 @@ class uploadAvator(MethodView):
                 return ({"error": True, "message": "Please select a file"}), 400
             if img:
                 try:
-                    filename = secure_filename(img.filename)
+                    fileName = secure_filename(img.filename)
+                    fileName.split('.')
+                    ext = fileName.split('.')[-1]
+                    randomName = imgRandomName()
+                    randonmFileName = randomName + '.' + ext
                     # get theh client object
                     blob_service_client = BlobServiceClient.from_connection_string(
                         connection_string)
                     blob_client = blob_service_client.get_blob_client(
-                        container=container_name, blob=filename)
+                        container=container_name, blob=randonmFileName)
                     blob_client.upload_blob(img)
+
 
 
                     avatarInfo["userId"] = data["id"]
                     avatarInfo["name"] = data["name"]
-                    avatarInfo["fileName"] = filename
+                    avatarInfo["fileName"] = fileName
                     avatarInfo["avatarUrl"] = blob_client.url
                     return ({"data": avatarInfo}), 200
                 except Exception as e:
@@ -58,5 +65,9 @@ class uploadAvator(MethodView):
                 return ({"error": True, "message": "未登入系統，請先登入會員"}), 403
 
 
+def imgRandomName (size=20 , chars=string.ascii_letters+string.digits):
+    return ''.join(random.choice(chars) for _ in range (size))
+
+
 uploadImgApi.add_url_rule(
-    '/avatar', view_func=uploadAvator.as_view('Operation about avatar'), methods=['POST'])
+    '/avatar', view_func=uploadAvatar.as_view('Operation about avatar'), methods=['POST'])
