@@ -88,8 +88,7 @@ class order(MethodView):
         validate_phone_number_pattern = r"^(\+\d{1,3}|00\d{1,3})\d{6,14}$"
         phoneValidation = re.match(
         validate_phone_number_pattern, orderData["order"]["contact"]["phone"])
-        print("紀錄")
-        print(orderData)
+    
         spotId = orderData["order"]["trip"]["id"]
         status = "未付款"
         contactPhone = orderData["order"]["contact"]["phone"]
@@ -104,8 +103,7 @@ class order(MethodView):
         formattedDate = now.strftime('%Y-%m-%d')
         dateForOrderNumber = formattedDate.replace('-', '')
         idForOrderNumber = str(memberId).zfill(4)
-        print("orderNumber")
-        print(orderNumber)
+       
         if (token is not None and not phoneValidation):
             return ({"error": True, "message": "請輸入正確手機格式，包含國碼與號碼"}), 400
         elif token is not None:
@@ -126,8 +124,7 @@ class order(MethodView):
                 else:
                     serialNumber = str(int((str(info[0][2]))[-3:])+1).zfill(3)
                     orderNumber = dateForOrderNumber + idForOrderNumber + serialNumber
-                    print("serialNumber")
-                    print(serialNumber)
+             
                     cur.execute(
                         "INSERT INTO order_info(member_id,order_number,spot_id,date,time,price,status,contact_name,contact_email,contact_phone) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);", (memberId, int(orderNumber), spotId, date, time, price, status, contactName, contactEmail, contactPhone))
                     mydb.commit()

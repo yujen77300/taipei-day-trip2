@@ -149,8 +149,7 @@ bookingButton.addEventListener('click', function () {
       newBookingData["date"] = tripDate.value
       let today = new Date();
       today = today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate() + ""
-      console.log("今天")
-      console.log(today)
+
       let tomorrow = new Date(today)
       tomorrow.setDate(tomorrow.getDate() + 1)
       // en-CA => YYYY-MM-DD
@@ -161,10 +160,6 @@ bookingButton.addEventListener('click', function () {
         newBookingData["time"] = "morning"
       }
       newBookingData["price"] = parseInt((fee.textContent).substr(3, 4), 0)
-      console.log("我在這裡")
-      console.log(newBookingData)
-      console.log(tripDate.value)
-      console.log(tomorrow)
 
       if (tripDate.value >= tomorrow) {
         bookNewSchedule(newBookingData)
@@ -209,10 +204,10 @@ async function bookNewSchedule(data) {
     let response = await fetch(url, options);
     let result = await response.json();
     if (response.status === 200) {
-      console.log("成功新增")
+  
       document.location.href = '/booking'
     } else if (response.status === 400) {
-      console.log(result["message"])
+     
       bookingFail.textContent = result["message"]
       bookingFail.style.marginTop = "10px"
       bookingButton.style.marginTop = "10px"

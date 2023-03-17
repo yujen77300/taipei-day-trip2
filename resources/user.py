@@ -138,14 +138,13 @@ class userOrder(MethodView):
             cur.execute(
                 "SELECT order_info.order_number,spot_info.name,order_info.date,order_info.time,order_info.created_at,order_info.status FROM order_info JOIN spot_info ON order_info.spot_id = spot_info.id  WHERE member_id = %s;", [memberId])
             memberOrderData = cur.fetchall()
-            print(memberOrderData)
-            print(len(memberOrderData))
+       
             if memberOrderData is not None:
                 try:
                     # no代表第幾個訂單
                     no = 1
                     for order in memberOrderData:
-                        print(order)
+                      
                         datata = {}
                         datata["orderNumber"] = order["order_number"]
                         datata["name"] = order["name"]
@@ -178,7 +177,7 @@ def isValidMail(email):
     if re.fullmatch(emailRegex, email):
         return True
     else:
-        print("Invalid email")
+        return False
 
 
 def isValidPwd(password):
