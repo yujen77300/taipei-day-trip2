@@ -68,7 +68,7 @@ class booking(MethodView):
         if token is not None and len(date) > 0:
             bookingDate = datetime.datetime.strptime(date, '%Y-%m-%d')
             bookingDate = bookingDate.date()
-            print(type(bookingDate))
+            
             if bookingDate >= allowedBookingDate:
                 try:
                     mydb = taipeiPool.get_connection()
@@ -82,8 +82,6 @@ class booking(MethodView):
                     cur.execute(
                         "SELECT cart.id FROM cart WHERE cart.member_id=%s ;", [memberId])
                     cartId = (cur.fetchone())[0]
-                    print("測試")
-                    print(cartId)
                     cur.execute(
                         "INSERT INTO cart_spot_info(cart_id,spot_id) values(%s,%s);", (cartId, attractionId))
                     mydb.commit()

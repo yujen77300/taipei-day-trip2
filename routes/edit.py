@@ -31,28 +31,24 @@ class editInfo(MethodView):
         if token is not None:
             try:
                 data = request.get_json()
-                print("測試測試")
-                print(data)
                 userName = data["userName"]
                 email = data["email"]
                 phone = data["phone"]
                 avatarUrl = data["avatarUrl"]
                 avatarName = data["avatarName"]
-                print(avatarName)
-                print(avatarUrl)
+
                 cur.execute(
                     "UPDATE member SET phone=%s WHERE name=%s", (phone, userName))
                 cur.execute(
                     "SELECT avatar_name FROM member WHERE name=%s", [userName])
                 info = cur.fetchone()
                 originAvatar = info["avatar_name"]
-                print("原本的圖片")
-                print(originAvatar)
+    
                 if email != tokenData["email"]:
                     cur.execute(
                         "UPDATE member SET email=%s WHERE name=%s", (email, userName))
                 if avatarName != originAvatar:
-                    print("近來更改圖片")
+                  
                     cur.execute(
                         "UPDATE member SET avatar_url=%s,avatar_name=%s WHERE name=%s", (avatarUrl, avatarName, userName))
                 mydb.commit()
@@ -75,9 +71,7 @@ class editPwd(MethodView):
         if token is not None:
             try:
                 data = request.get_json()
-                print("測試測試")
-                print(data)
-                print(tokenData["name"])
+           
                 cur.execute(
                     "SELECT password FROM member WHERE name=%s", [tokenData["name"]])
                 info = cur.fetchone()

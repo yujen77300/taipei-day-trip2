@@ -6,6 +6,7 @@ import jwt
 import re
 import os
 from dotenv import load_dotenv
+from controllers.UserController import *
 
 load_dotenv()
 
@@ -26,23 +27,31 @@ class user(MethodView):
 
     def get(self):
         token = request.cookies.get('token')
-        mydb = taipeiPool.get_connection()
-        cur = mydb.cursor(dictionary=True)
-        try:
-            data = jwt.decode(token, os.getenv('JWT_KEY'), algorithms="HS256")
-            cur.execute(
-                "SELECT avatar_url, avatar_name,phone,email from member WHERE name =%s;", [data["name"]])
-            info = cur.fetchone()
-            data["email"] = info["email"]
-            data["avatarUrl"] = info["avatar_url"]
-            data["avatarName"] = info["avatar_name"]
-            data["phone"] = info["phone"]
-            return ({'data': data}), 200
-        except Exception as e:
-            return {'error': True, "message": str(e)}
-        finally:
-            cur.close()
-            mydb.close()
+        user_controller = UserController()
+        response = user_controller.getUserAuth(token)
+        if response.get('error') is not True:
+            return ({'data': response}), 200
+        else:
+            return response
+        # data = jwt.decode(token, os.getenv('JWT_KEY'), algorithms="HS256")
+        # mydb = taipeiPool.get_connection()
+        # cur = mydb.cursor(dictionary=True)
+        # try:
+        #     data = jwt.decode(token, os.getenv('JWT_KEY'), algorithms="HS256")
+        #     cur.execute(
+        #         "SELECT avatar_url, avatar_name,phone,email from member WHERE name =%s;", [data["name"]])
+        #     info = cur.fetchone()
+        #     data["email"] = info["email"]
+        #     data["avatarUrl"] = info["avatar_url"]
+        #     data["avatarName"] = info["avatar_name"]
+        #     data["phone"] = info["phone"]
+        #     return ({'data': data }), 200
+        # except Exception as e:
+        #     return {'error': True, "message": str(e)}
+        # finally:
+        #     cur.close()
+        #     mydb.close()
+
     # 登入會員
 
     def put(self):
@@ -63,7 +72,7 @@ class user(MethodView):
                 payload_data["name"] = memberInfo[1]
                 payload_data["email"] = memberInfo[2]
                 encoded_jwt = jwt.encode(
-                payload=payload_data, key=os.getenv('JWT_KEY'), algorithm="HS256")
+                    payload=payload_data, key=os.getenv('JWT_KEY'), algorithm="HS256")
                 response = make_response(({"ok": True}), 200)
                 response.set_cookie(key='token', value=encoded_jwt,
                                     expires=exp_epoc_time, httponly=True)
@@ -76,6 +85,7 @@ class user(MethodView):
             cur.close()
             mydb.close()
     # 登出會員
+
     def delete(self):
         try:
             token = request.cookies.get('token')
@@ -138,14 +148,13 @@ class userOrder(MethodView):
             cur.execute(
                 "SELECT order_info.order_number,spot_info.name,order_info.date,order_info.time,order_info.created_at,order_info.status FROM order_info JOIN spot_info ON order_info.spot_id = spot_info.id  WHERE member_id = %s;", [memberId])
             memberOrderData = cur.fetchall()
-            print(memberOrderData)
-            print(len(memberOrderData))
+
             if memberOrderData is not None:
                 try:
                     # no代表第幾個訂單
                     no = 1
                     for order in memberOrderData:
-                        print(order)
+
                         datata = {}
                         datata["orderNumber"] = order["order_number"]
                         datata["name"] = order["name"]
@@ -178,7 +187,7 @@ def isValidMail(email):
     if re.fullmatch(emailRegex, email):
         return True
     else:
-        print("Invalid email")
+        return False
 
 
 def isValidPwd(password):
@@ -188,6 +197,7 @@ def isValidPwd(password):
         return True
     else:
         return False
+
 
 
 userApi.add_url_rule(
