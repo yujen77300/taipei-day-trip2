@@ -1,5 +1,5 @@
 
-from resources.user import *
+from user import *
 
 
 def test_isValidMail():

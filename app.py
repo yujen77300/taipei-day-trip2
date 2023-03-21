@@ -1,10 +1,10 @@
 from flask import *
-from resources.attraction import attractionApi
-from resources.user import userApi
-from resources.booking import bookingApi
-from resources.order import orderApi
-from resources.upload import uploadImgApi
-from resources.edit import editAllInfoApi
+from routes.attraction import attractionApi
+from routes.user import userApi
+from routes.booking import bookingApi
+from routes.order import orderApi
+from routes.upload import uploadImgApi
+from routes.edit import editAllInfoApi
 from asgiref.wsgi import WsgiToAsgi
 import uvicorn
 
