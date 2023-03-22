@@ -143,6 +143,23 @@ h1 {
   display: none;
 }
 
+.categories {
+  color: #000000;
+  font-size: 15px;
+  width: 120px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border: none;
+}
+
+.categories:hover {
+  background-color: #e8e8e8;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 
 .cat-text {
   padding-left: 15px;
