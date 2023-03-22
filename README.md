@@ -3,8 +3,11 @@ Taipei Day Trip is a website that allows you to discover and explore special att
 
 ## Live Demo
 Demo website : https://taipeidaytrip.yujenhuang.site/
+
 Test account and password: test@gmail.com / 1234qwer
+
 Test Card Number: 4242 4242 4242 4242 / Date: 01/26 / CVV: 123
+
 ![taipei day trip](https://user-images.githubusercontent.com/54500773/226786894-a5567776-fd2f-43be-88bf-91745ed3128b.gif)
 
 ## Table of Contents
